@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+
+            <!-- Lista produktów -->
+            <Frame BackgroundColor="#f8f9fa" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Lista produktów" FontSize="18" FontAttributes="Bold"/>
+
+                    <CollectionView x:Name="ProductsListView"
+                                  SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10" ColumnDefinitions="*,80,100">
+                                    <Label Grid.Column="0" Text="{Binding Nazwa}" FontSize="16"/>
+                                    <Label Grid.Column="1" Text="{Binding Cena, StringFormat='{0} zł'}" 
+                                           FontSize="14" TextColor="Green"/>
+                                    <Label Grid.Column="2" Text="{Binding Kategoria}" 
+                                           FontSize="14" TextColor="Gray"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Przyciski akcji -->
+            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="10">
+                <Button Grid.Column="0" Text="Dodaj" 
+                        Clicked="OnDodajClicked"
+                        BackgroundColor="#007bff" TextColor="White"/>
+                <Button Grid.Column="1" Text="Edytuj" 
+                        Clicked="OnEdytujClicked"
+                        BackgroundColor="#28a745" TextColor="White"/>
+                <Button Grid.Column="2" Text="Usuń" 
+                        Clicked="OnUsunClicked"
+                        BackgroundColor="#dc3545" TextColor="White"/>
+                <Button Grid.Column="3" Text="Zapisz CSV" 
+                        Clicked="OnZapiszClicked"
+                        BackgroundColor="#6c757d" TextColor="White"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
